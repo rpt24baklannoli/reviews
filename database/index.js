@@ -1,13 +1,13 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('', 'root', 'password', {
+const sequelize = new Sequelize('Reviews', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
 });
 
 sequelize.query('CREATE DATABASE IF NOT EXISTS REVIEWS');
 
-const db = new Sequelize('REVIEWS', 'root', 'password', {
+const db = new Sequelize('REVIEWS', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
 });

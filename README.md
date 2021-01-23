@@ -13,6 +13,7 @@ Highlighted Technologies: React, React Semantic UI, Express, mySQL, Jest, Webpac
 1. [Getting Started](#Getting)
 2. [Testing](#Testing)
 3. [Related Projects](#Related)
+4. [CRUD-SDC](#CRUD)
 
 ## Getting Started
 
@@ -58,3 +59,84 @@ npm run test
 - https://github.com/rpt24sourcandy/fetsyReviews
 - https://github.com/rpt24sourcandy/fetsyShopping
 - https://github.com/rpt24sourcandy/fetsyReviewsProxy
+
+## CRUD
+
+### Create / POST - create new item
+#### Description:
+- An Item id is provided and a review for the item is created.
+
+#### The endpoint for creating a new review is:
+  '/api/items/:itemId/reviews'
+
+#### An example input for using this API:
+{
+  "customer_name": "David Amran",
+  "date_of_review": "Oct 31, 2020",
+  "rating": 4,
+  "review_content": "Really love this mask in black! I received a lot of compliments. It was delivered on time .",
+  "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks1.jpg",
+  "item_option": "Black"
+}
+#### An example result of using this API:
+{
+  "id": 209,
+  "customer_name": "David Amran",
+  "date_of_review": "Oct 31, 2020",
+  "rating": 4,
+  "review_content": "Really love this mask in black! I received a lot of compliments. It was delivered on time .",
+  "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks1.jpg",
+  "item_option": "Black",
+  "ItemId": "3",
+  "updatedAt": "2021-01-22T05:56:39.246Z",
+  "createdAt": "2021-01-22T05:56:39.246Z"
+}
+
+
+### Read / GET - read and item
+ - Aready implemented by the owner of the service during the FEC.
+
+#### The endpoint for getting all the reviews of a specific item:
+  '/api/items/:itemId/reviews'
+
+### Delete / DELETE - delete an item
+
+#### Description:
+-  A review id is provided and the specific review is deleted from the database (by its id).
+
+#### The endpoint for creating a new review is:
+  '/api/items/:itemId/reviews/:reviewId'
+
+#### An example result of using this API:
+  {
+      "message": "Review was deleted successfully!"
+  }
+
+## Update / PUT - update an item
+
+#### Description:
+-  A review id and an object are provided and the specific review is updated with the modified object.
+- It's also possible to send an object with only the relevant field for the required update.
+
+#### The endpoint for creating a new review is:
+'/api/items/:itemId/reviews/:reviewId'
+
+#### An example input of using this API:
+{
+  "customer_name": "David Amran",
+  "date_of_review": "Oct 31, 2020",
+  "rating": 1,
+  "review_content": "Really love this mask in black! I received a lot of compliments. It was delivered on time .",
+  "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks1.jpg",
+  "item_option": "Black"
+}
+OR
+
+{
+  "rating": 4
+}
+
+#### An example output of using this API:
+{
+    "message": "Review 209 was updated successfully."
+}
