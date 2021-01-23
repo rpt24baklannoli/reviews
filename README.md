@@ -116,6 +116,7 @@ npm run test
 
 #### Description:
 -  A review id and an object are provided and the specific review is updated with the modified object.
+- It's also possible to send an object with only the relevant field for the required update.
 
 #### The endpoint for creating a new review is:
 '/api/items/:itemId/reviews/:reviewId'
@@ -129,8 +130,13 @@ npm run test
   "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks1.jpg",
   "item_option": "Black"
 }
+OR
+
+{
+  "rating": 4
+}
 
 #### An example output of using this API:
 {
-    "message": "Review was updated succeddfully."
+    "message": "Review 209 was updated successfully."
 }

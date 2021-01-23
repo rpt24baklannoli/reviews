@@ -1,14 +1,10 @@
-const { Review } = require('../database');
+const model = require('./model.js');
 
 const controller = {
   reviews: {
     // FEC GET
     get: (req, res) => {
-      Review.findAll({
-        where: {
-          ItemId: req.params.itemId,
-        },
-      })
+      model.findAll(req.params.itemId)
         .then((items) => {
           res.status(200).json(items);
         })
@@ -35,7 +31,7 @@ const controller = {
         item_option: req.body.item_option,
         ItemId: req.params.itemId,
       };
-      Review.create(newReview)
+      model.create(newReview)
         .then((data) => {
           res.send(data);
         })
@@ -51,13 +47,11 @@ const controller = {
     delete: (req, res) => {
       const reviewId = req.params.reviewId;
       // const itemId = req.params.itemId;
-      Review.destroy({
-        where: { id: reviewId },
-      })
+      model.destroy(reviewId)
         .then((num) => {
           if (num === 1) {
             res.send({
-              message: 'Review was deleted successfully!',
+              message: `Review with id ${reviewId} was deleted successfully!`,
             });
           } else {
             res.send({
@@ -71,20 +65,17 @@ const controller = {
           });
         });
     },
-    // update/put
-    // '/api/items/:itemId/reviews/:reviewId'
+    // UPDATE/PUT
     put: (req, res) => {
       // const itemId = req.params.itemId;
       const reviewId = req.params.reviewId;
-      Review.update(req.body, {
-        where: { id: reviewId },
-      })
+      model.update(req.body, reviewId)
         .then((num) => {
           // console.log(num);
           // it requires "==" instead of "==="
           if (num == 1) {
             res.send({
-              message: 'Review was updated succeddfully.',
+              message: `Review ${reviewId} was updated successfully.`,
             });
           } else {
             res.send({
