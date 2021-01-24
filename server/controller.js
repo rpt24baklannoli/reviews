@@ -43,7 +43,6 @@ const controller = {
         });
     },
     // DELETE
-    // '/api/items/:itemsId/reviews/:reviewId'
     delete: (req, res) => {
       const reviewId = req.params.reviewId;
       // const itemId = req.params.itemId;
@@ -59,7 +58,7 @@ const controller = {
             });
           }
         })
-        .catch((err)=> {
+        .catch((err) => {
           res.status(500).send({
             message: err.message || `Could not delete Review with id ${reviewId}`,
           });

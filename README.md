@@ -61,6 +61,8 @@ npm run test
 - https://github.com/rpt24sourcandy/fetsyReviewsProxy
 
 ## CRUD
+ - This service supports full CRUD functionality, available for testing with Postman. Notice not all functionality is built into the front end.
+
 
 ### Create / POST - create new item
 #### Description:
@@ -78,7 +80,8 @@ npm run test
   "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks1.jpg",
   "item_option": "Black"
 }
-#### An example result of using this API:
+
+#### An example output of using this API:
 {
   "id": 209,
   "customer_name": "David Amran",
@@ -94,26 +97,56 @@ npm run test
 
 
 ### Read / GET - read and item
+#### Description:
  - Aready implemented by the owner of the service during the FEC.
+ - Retrieve all the reviews for a specific item.
 
 #### The endpoint for getting all the reviews of a specific item:
   '/api/items/:itemId/reviews'
 
-### Delete / DELETE - delete an item
+ #### An example output of using this API:
+ [
+    {
+        "id": 26,
+        "customer_name": "Johnathan Mertz",
+        "date_of_review": "Sept 4, 2020",
+        "rating": 2,
+        "review_content": "Qui consequatur possimus eaque eligendi voluptates fuga.",
+        "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks1.jpg",
+        "item_option": "enim occaecati reprehenderit",
+        "createdAt": "2021-01-22T03:07:58.000Z",
+        "updatedAt": "2021-01-22T03:07:58.000Z",
+        "ItemId": 9
+    },
+    {
+        "id": 44,
+        "customer_name": "Arnold Pollich",
+        "date_of_review": "Aug 3, 2020",
+        "rating": 4,
+        "review_content": "Repudiandae quia error blanditiis omnis a et.",
+        "image_url": "https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks9.jpg",
+        "item_option": "consectetur nemo corporis",
+        "createdAt": "2021-01-22T03:07:58.000Z",
+        "updatedAt": "2021-01-22T03:07:58.000Z",
+        "ItemId": 9
+    },
+    ...
+ ]
 
+
+### Delete / DELETE - delete an item
 #### Description:
 -  A review id is provided and the specific review is deleted from the database (by its id).
 
 #### The endpoint for creating a new review is:
   '/api/items/:itemId/reviews/:reviewId'
 
-#### An example result of using this API:
+#### An example output of using this API:
   {
       "message": "Review was deleted successfully!"
   }
 
 ## Update / PUT - update an item
-
 #### Description:
 -  A review id and an object are provided and the specific review is updated with the modified object.
 - It's also possible to send an object with only the relevant field for the required update.
