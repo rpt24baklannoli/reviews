@@ -1,4 +1,4 @@
-const { Review } = require('../database');
+const { Review } = require('../database/model.js');
 
 // MySQL + Sequalize
 const model = {
