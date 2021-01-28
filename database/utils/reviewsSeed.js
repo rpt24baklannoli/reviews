@@ -99,7 +99,7 @@ const reviewsData = [
 	},
 ];
 
-const addFakeReview = () => {
+const getFakeReview = (maxNumItems) => {
 	const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 	const name = faker.name.findName();
 	const d = faker.date.past();
@@ -112,25 +112,24 @@ const addFakeReview = () => {
 	const options = faker.lorem.words(3);
 	const itemId = faker.random.number({
 		min: 1,
-		max: 10,
+		max: maxNumItems,
 	});
-	const json = {
+	const reviewJson = {
 		customer_name: name,
 		date_of_review: date,
 		rating,
 		review_content: content,
-		image_url: `https://fec-etsy-reviews.s3-us-west-1.amazonaws.com/Masks${faker.random.number({
-			min: 0,
-			max: 9,
+		image_url: `https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/${faker.random.number({
+			min: 1,
+			max: 999,
 		})}.jpg`,
 		ItemId: itemId,
 		item_option: options,
 	};
-	reviewsData.push(json);
+	// reviewsData.push(json);
+  return reviewJson;
 };
 
-for (let i = 0; i < 200; i += 1) {
-	addFakeReview();
-}
+module.exports.reviewsData = reviewsData;
+module.exports.getFakeReview = getFakeReview;
 
-module.exports = reviewsData;

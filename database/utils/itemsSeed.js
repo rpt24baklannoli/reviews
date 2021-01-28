@@ -1,3 +1,6 @@
+const faker = require('faker');
+
+// creating 10,000 fake items
 const itemsData = [
 	{
 		item_name: 'Wine RANDOM Face Mask with clear and red rhinestones',
@@ -31,4 +34,14 @@ const itemsData = [
 	},
 ];
 
-module.exports = itemsData;
+const getFakeItem = () => {
+  const itemName = faker.lorem.sentence(nb_words=15);
+  const itemJson = {
+    item_name: itemName,
+  };
+
+  return (itemJson);
+};
+
+module.exports.itemsData = itemsData;
+module.exports.getFakeItem = getFakeItem;

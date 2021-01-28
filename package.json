@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config ./jest.config.json",
-    "seed-db": "node database/utils/seed.js",
+    "seed-db": "node database/scaleSeed.js",
+    "generate-images": "node database/utils/imagesScript.js",
     "start": "nodemon server/index.js",
     "react-dev": "webpack --watch",
     "lint": "eslint client/src/**"
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/rpt24sourcandy/fetsyReviews#readme",
   "dependencies": {
     "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^5.1.0",
@@ -36,7 +38,7 @@
     "sass": "^1.29.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
-    "sequelize": "^6.3.5",
+    "sequelize": "^6.5.0",
     "styled-components": "^5.2.1",
     "url-loader": "^4.1.1"
   },
