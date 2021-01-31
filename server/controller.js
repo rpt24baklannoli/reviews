@@ -53,8 +53,9 @@ const controller = {
               message: `Review with id ${reviewId} was deleted successfully!`,
             });
           } else {
+            console.log(num);
             res.send({
-              message: `Cannot delete Review with id ${reviewId}.`,
+              message: `Cannot delete Review with id ${reviewId}. ${num}`,
             });
           }
         })
