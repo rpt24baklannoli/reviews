@@ -27,11 +27,10 @@ To run on a local machine, start mySQL service and in database/index.js on line 
 
 For mySQL EC2 instance, a new credential and user name may need to be created with all admin rights for set up and database seeding to work properly. Need to update client/src/main.jsx axios get request path on line 35 to EC2 instance IP address.
 
-To seed the database
+To seed MySql database with 10M items and 50M reviews:
 
 ```
-node database/index.js
-npm run seed-db
+npm run seed_and_load
 ```
 
 To start webpack
