@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config ./jest.config.json",
-    "seed-db": "node database/scaleSeed.js",
     "generate-images": "node database/utils/imagesScript.js",
     "start": "nodemon server/index.js",
     "react-dev": "webpack --watch",
-    "lint": "eslint client/src/**"
+    "lint": "eslint client/src/**",
+    "seed-db": "node database/csvSeed.js",
+    "load_from_csv": "mysql reviews < ./database/loadFromCSV.sql",
+    "seed_and_load": "time node database/csvSeed.js; time mysql reviews < ./database/loadFromCSV.sql"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,14 @@
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
     "express": "^4.17.1",
     "faker": "^5.1.0",
+    "fast-csv": "^4.3.6",
+    "fs": "0.0.1-security",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
+    "node-couchdb": "^1.3.0",
     "nodemon": "^2.0.6",
     "path": "^0.12.7",
     "react": "^17.0.1",
@@ -39,6 +45,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "sequelize": "^6.5.0",
+    "stream": "0.0.2",
     "styled-components": "^5.2.1",
     "url-loader": "^4.1.1"
   },
