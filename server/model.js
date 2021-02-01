@@ -1,4 +1,3 @@
-//const _ = require('underscore');
 const { Review } = require('../database/model.js');
 const { items } = require('../database/database_couchDb/index.js');
 
@@ -102,6 +101,7 @@ const model = {
     },
   },
 };
+
 
 //module.exports = model.mysqlSequalize;
 module.exports = model.couchDb;
