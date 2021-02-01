@@ -106,3 +106,7 @@ client/dist
 .tern-port
 
 *.pem
+
+# data files
+*.csv
+items.json
