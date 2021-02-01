@@ -10,8 +10,10 @@
     "react-dev": "webpack --watch",
     "lint": "eslint client/src/**",
     "seed-db": "node database/csvSeed.js",
-    "load_from_csv": "mysql reviews < ./database/loadFromCSV.sql",
-    "seed_and_load": "time node database/csvSeed.js; time mysql reviews < ./database/loadFromCSV.sql"
+    "load_from_csv_mysql": "mysql reviews < ./database/loadFromCSV.sql",
+    "seed_and_load_mysql": "time node database/csvSeed.js; time mysql reviews < ./database/loadFromCSV.sql",
+    "prepare_json_couchdb": "time node database/database_couchDb/jsonSeed.js",
+    "seed_couchdb_from_json": "bash database/database_couchDb/couchDB_seed.sh"
   },
   "repository": {
     "type": "git",

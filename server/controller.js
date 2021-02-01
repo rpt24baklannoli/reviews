@@ -45,8 +45,9 @@ const controller = {
     // DELETE
     delete: (req, res) => {
       const reviewId = req.params.reviewId;
-      // const itemId = req.params.itemId;
-      model.destroy(reviewId)
+      // for couchDb
+      const itemId = req.params.itemId;
+      model.destroy(reviewId, itemId)
         .then((num) => {
           if (num === 1) {
             res.send({
@@ -67,9 +68,10 @@ const controller = {
     },
     // UPDATE/PUT
     put: (req, res) => {
-      // const itemId = req.params.itemId;
+      // for couchDb
+      const itemId = req.params.itemId;
       const reviewId = req.params.reviewId;
-      model.update(req.body, reviewId)
+      model.update(req.body, reviewId, itemId)
         .then((num) => {
           // console.log(num);
           // it requires "==" instead of "==="
