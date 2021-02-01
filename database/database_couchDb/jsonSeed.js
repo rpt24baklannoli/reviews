@@ -55,9 +55,9 @@ const createItems = () => {
       writer.once('drain', writeItems);
     }
     // writer.end();
-  }
+  };
 
   writeItems();
-}
+};
 
 createItems();

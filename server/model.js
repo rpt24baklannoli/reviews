@@ -72,7 +72,7 @@ const model = {
         return `${reviewId} for ${itemId} couldn't be deleted`;
       })
     },
-    // UPDATE
+    // UPDATE - '/api/items/:itemId/reviews/:reviewId'
 
     update: (updatedFields, reviewId, itemId) => {
       let itemBuild = itemId[itemId.length - 1];
