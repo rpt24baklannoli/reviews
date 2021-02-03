@@ -20,7 +20,7 @@ const generateItem = () => {
   return item;
 };
 
-const itemsToGenerate = 10000000;
+const itemsToGenerate = 10_000_000;
 const numPartitions = 10;
 
 
@@ -46,7 +46,7 @@ const createItems = () => {
         // see if we should continue, or wait
         // don't pass the callback, because we're not done yet.
         ok = writer.write(item);
-        if (numItems % 100000 === 0) {console.log(`Writing ${numItems}`);}
+        if (numItems % 100_000 === 0) {console.log(`Writing ${numItems}`);}
       }
     } while (numItems > 0 && ok);
     if (numItems > 0) {

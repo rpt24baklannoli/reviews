@@ -18,8 +18,8 @@ sequelize.sync({ force: true })
   });
 
 
-const itemsToGenerate = 10000000;
-const reviewsToGenerate = 50000000;
+const itemsToGenerate = 10_000_000;
+const reviewsToGenerate = 50_000_000;
 
 // Items
 /*
@@ -45,7 +45,7 @@ const createItems = () => {
         let item = getFakeItem();
         item.id = numItems;
         ok = writer.write(`${item.item_name},${item.createdAt},${item.updatedAt},${item.id}\n`);
-        if (numItems % 100000 === 0) {console.log(`Writing ${numItems}`);}
+        if (numItems % 100_000 === 0) {console.log(`Writing ${numItems}`);}
       }
     } while (numItems > 0 && ok);
     if (numItems > 0) {
@@ -89,7 +89,7 @@ const createReviews = () => {
         let review = getFakeReview(itemsToGenerate);
         review.id = numReviews;
         ok = writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option},${review.createdAt},${review.updatedAt},${review.id}\n`);
-        if (numReviews % 100000 === 0) { console.log(`Writing ${numReviews}`);}
+        if (numReviews % 100_000 === 0) { console.log(`Writing ${numReviews}`);}
       }
     } while (numReviews > 0 && ok);
     if (numReviews > 0) {

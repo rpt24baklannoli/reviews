@@ -110,3 +110,6 @@ client/dist
 # data files
 *.csv
 items.json
+
+# images on the local machine
+./database/images
