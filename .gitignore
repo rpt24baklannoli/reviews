@@ -106,3 +106,10 @@ client/dist
 .tern-port
 
 *.pem
+
+# data files
+*.csv
+items.json
+
+# images on the local machine
+./database/images
