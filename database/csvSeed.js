@@ -18,8 +18,9 @@ sequelize.sync({ force: true })
   });
 
 
-const itemsToGenerate = 10_000_000;
-const reviewsToGenerate = 50_000_000;
+const itemsToGenerate = 10000000;
+
+const reviewsToGenerate = 50000000;
 
 // Items
 /*
@@ -29,7 +30,7 @@ const createItems = () => {
   console.log("Creating items");
   var numItems = itemsToGenerate;
   const writer = fs.createWriteStream('./database/items.csv');
-  writer.write('item_name,createdAt,updatedAt,id\n');
+  writer.write('item_name\n');
   function writeItems() {
     var ok = true;
     do {
@@ -38,14 +39,14 @@ const createItems = () => {
         // last time!
         let item = getFakeItem();
         item.id = numItems;
-        writer.write(`${item.item_name},${item.createdAt},${item.updatedAt},${item.id}\n`);
+        writer.write(`${item.item_name}\n`);
       } else {
         // see if we should continue, or wait
         // don't pass the callback, because we're not done yet.
         let item = getFakeItem();
         item.id = numItems;
-        ok = writer.write(`${item.item_name},${item.createdAt},${item.updatedAt},${item.id}\n`);
-        if (numItems % 100_000 === 0) {console.log(`Writing ${numItems}`);}
+        ok = writer.write(`${item.item_name}\n`);
+        if (numItems % 100000 === 0) {console.log(`Writing ${numItems}`);}
       }
     } while (numItems > 0 && ok);
     if (numItems > 0) {
@@ -72,7 +73,7 @@ const createReviews = () => {
 
 
   const writer = fs.createWriteStream('./database/reviews.csv');
-  writer.write('customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option,createdAt,updatedAt,id\n');
+  writer.write('customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option\n');
 
   function writeReviews() {
     var ok = true;
@@ -82,14 +83,14 @@ const createReviews = () => {
         // last time!
         let review = getFakeReview(itemsToGenerate);
         review.id = numReviews;
-        writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option},${review.createdAt},${review.updatedAt},${review.id}\n`);
+        writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option}\n`);
       } else {
         // see if we should continue, or wait
         // don't pass the callback, because we're not done yet.
         let review = getFakeReview(itemsToGenerate);
         review.id = numReviews;
-        ok = writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option},${review.createdAt},${review.updatedAt},${review.id}\n`);
-        if (numReviews % 100_000 === 0) { console.log(`Writing ${numReviews}`);}
+        ok = writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option}\n`);
+        if (numReviews % 100000 === 0) { console.log(`Writing ${numReviews}`);}
       }
     } while (numReviews > 0 && ok);
     if (numReviews > 0) {
@@ -104,3 +105,6 @@ const createReviews = () => {
 
 createItems();
 createReviews();
+
+// ,${review.createdAt},${review.updatedAt},${review.id}
+// ,${item.updatedAt},${item.id}

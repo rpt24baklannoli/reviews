@@ -7,6 +7,8 @@ class SingleReview extends React.Component {
 	}
 	render() {
 		let image = `https://source.unsplash.com/collection/4389261/${Math.random() * 36}`;
+		let splitDate = this.props.review.date_of_review.split(" ");
+    let dateOfReview = splitDate[0] + ' ' + splitDate[1] + ', ' + splitDate[2];
 		return (
 			<Feed.Event style={{ paddingTop: '30px' }}>
 				<Feed.Label>
@@ -17,7 +19,7 @@ class SingleReview extends React.Component {
 						<Feed.User style={{ paddingBottom: '15px' }}>
 							<a style={{ color: 'gray', textDecoration: 'underline', transition: 'opacity 200ms ease-out' }}>{this.props.review.customer_name}</a>
 						</Feed.User>
-						<Feed.Date>{this.props.review.date_of_review}</Feed.Date>
+						<Feed.Date>{dateOfReview}</Feed.Date>
 					</Feed.Summary>
 					<Rating rating={this.props.review.rating} defaultRating={3} maxRating={5} size="huge" disabled />
 					<Feed.Extra text>
