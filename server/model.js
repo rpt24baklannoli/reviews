@@ -52,7 +52,7 @@ const model = {
     // DELETE - '/api/items/:itemId/reviews/:reviewId'
     destroy: (reviewId, itemId) => {
       let itemBuild = itemId[itemId.length - 1];
-      console.log('delete ' + `${itemBuild}:${itemId} , review ${reviewId}`);
+      //console.log('delete ' + `${itemBuild}:${itemId} , review ${reviewId}`);
       return items.get(`${itemBuild}:${itemId}`)
         .then ((item) => {
         //console.log('found item');
@@ -76,7 +76,7 @@ const model = {
     update: (updatedFields, reviewId, itemId) => {
       let itemBuild = itemId[itemId.length - 1];
       let itemIdWithPartition = `${itemBuild}:${itemId}`;
-      console.log('update ' + `${itemIdWithPartition} , review ${reviewId}`);
+      //console.log('update ' + `${itemIdWithPartition} , review ${reviewId}`);
       return items.get(itemIdWithPartition)
         .then((item) => {
           for (let k = 0; k < item.reviews.length; k++) {
@@ -85,7 +85,7 @@ const model = {
               for (let key in updatedFields) {
                 review[key] = updatedFields[key];
               }
-              console.log("About to insert", item._id);
+              //console.log("About to insert", item._id);
               return items.insert(item);
             }
           }
@@ -116,6 +116,7 @@ const model = {
       const query = {
         text: 'INSERT INTO reviews (customer_name,date_of_review,rating,review_content,image_url,item_option,ItemId) VALUES ($1, $2, $3, $4, $5, $6, $7)',
         values: [newReview.customer_name,newReview.date_of_review,newReview.rating,newReview.review_content,newReview.image_url,newReview.item_option,newReview.ItemId],
+
       };
       return pgPool.connect()
         .then((client) => {
@@ -133,6 +134,7 @@ const model = {
       const query = {
         text: 'UPDATE reviews SET customer_name = $1 ,date_of_review = $2,rating = $3,review_content= $4,image_url =$5,item_option=$6 WHERE id=$7',
         values: [updatedFields.customer_name,updatedFields.date_of_review,updatedFields.rating,updatedFields.review_content,updatedFields.image_url,updatedFields.item_option,reviewId]
+
       };
       return pgPool.connect()
       .then((client) => {
@@ -160,89 +162,6 @@ const model = {
 },
 };
 
-
 // module.exports = model.mysqlSequalize;
-// module.exports = model.couchDb;
-module.exports = model.postgreSQL;
-
-
-
-// pool.connect()
-//     .then((client) => {
-//         client.query(`SELECT * FROM Reviews WHERE itemId = ${itemId}`)
-//             .then(res => {
-//                 for (let row of res.rows) {
-//                     console.log(row);
-//                 }
-//             })
-//             .catch(err => {
-//                 console.log(`could not retrieve the review for itemId ${itemId}`);
-//             });
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     });
-
-//     SELECT * FROM Reviews WHERE itemid =37
-// // // GET all users
-// const getReviews = (request, response) => {
-//   pool.query(`SELECT * FROM Reviews WHERE itemId = ${itemId}`, (error, results) => {
-//     if (error) {
-//       throw error
-// console.log(`could not retrieve the review for itemId ${itemId}`)
-//     }
-//     response.status(200).json(results.rows)
-//   })
-// }
-
-
-
-// // DELETE
-// const deleteUser = (request, response) => {
-//   const id = parseInt(request.params.id)
-
-//   pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-//     if (error) {
-//       throw error
-//     }
-//     response.status(200).send(`User deleted with ID: ${id}`)
-//   })
-// }
-
-
-
-// // to run from the terminal
-// // post
-//   curl --data "name=Elaine&email=elaine@example.com"
-// http://localhost:3000/users
-
-// // update/ put
-// curl -X PUT -d "name=Kramer" -d "email=kramer@example.com"
-// http://localhost:3000/users/1
-
-// // delete
-// curl -X "DELETE" http://localhost:3000/users/1
-// */
-
-
-
-// pool.connect()
-//     .then((client) => {
-//         client.query(`SELECT * FROM Reviews WHERE itemId = ${itemId}`)
-//             .then(res => {
-//                 for (let row of res.rows) {
-//                     console.log(row);
-//                 }
-//             })
-//             .catch(err => {
-//                 console.log(`could not retrieve the review for itemId ${itemId}`);
-//             });
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     });
-
-
-
-
-// INSERT INTO reviews (customer_name,date_of_review,rating,review_content,image_url,item_option,ItemId) VALUES ('Shaul Bokboza','March 9 2020',4,'kkkkkklklklkl klklklkklk','https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/58.jpg', 'black', 2);
+module.exports = model.couchDb;
+//module.exports = model.postgreSQL;

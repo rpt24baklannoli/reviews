@@ -30,22 +30,10 @@ CREATE TABLE Reviews (
   CONSTRAINT valid_rating CHECK (rating >= 1 AND rating <= 5)
 );
 
--- COPY items()
--- FROM '/Users/avigail/Desktop/SDC/fetsyReviews/database/items10test.csv'
+CREATE  INDEX itemId_idx ON Reviews (ItemId);
 
--- CSV HEADER;
-
--- COPY Items()
--- FROM '/Users/avigail/Desktop/SDC/fetsyReviews/database/items10test.csv'
--- DELIMITER '[Delimiter Character]' CSV [HEADER];
-
--- COPY Items FROM '/Users/avigail/Desktop/SDC/fetsyReviews/database/items10test.csv' WITH (FORMAT csv, DELIMITER ',',  NULL 'NULL');
---\COPY Items(item_name) FROM '/Users/avigail/Desktop/SDC/fetsyReviews/database/items10test.csv' WITH (FORMAT csv);
-
- --\COPY Items(item_name) FROM PROGRAM 'cut -d "," -f 1 ./database/items10test.csv' WITH (FORMAT CSV, HEADER)
-
- --\COPY Reviews(customer_name, date_of_review, rating, review_content, image_url, ItemId, item_option) FROM PROGRAM 'cut -d "," -f 1,2,3,4,5,6,7 ./database/reviews10test.csv' WITH (FORMAT CSV, HEADER)
-
+/*
+// copy command for uploading the postgreSQL database
  \COPY Items(item_name) FROM PROGRAM 'cat ./database/items.csv' WITH (FORMAT CSV, HEADER)
 
-\COPY Reviews(customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option) FROM PROGRAM 'cat ./database/reviews.csv' WITH (FORMAT CSV, HEADER)
+\COPY Reviews(customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option) FROM PROGRAM 'cat ./database/reviews.csv' WITH (FORMAT CSV, HEADER)*/
