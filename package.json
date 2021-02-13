@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "oldtest": "jest --config ./jest.config.json",
-    "test": "mocha server/server.test.js",
+    "test": "jest server/server.test.js",
     "sdc-endpoints-test": "mocha server/server.test.js",
     "generate-images": "node database/utils/imagesScript.js",
     "start": "nodemon server/index.js",

@@ -106,9 +106,10 @@ const model = {
       return pgPool.connect()
         .then((client) => {
           return client.query(`SELECT * FROM Reviews WHERE itemId = ${itemId}`)
-        })
-        .then(res => {
-          return res.rows;
+            .then(res => {
+              client.release();
+              return res.rows;
+            })
         })
       },
     // POST - '/api/items/:itemId/reviews'
@@ -120,11 +121,12 @@ const model = {
       };
       return pgPool.connect()
         .then((client) => {
-          return client.query(query);
+          return client.query(query)
+            .then(res => {
+              client.release();
+              return (res.rowCount);
+            });
         })
-        .then(res => {
-          return (res.rowCount);
-        });
     },
    // UPDATE - '/api/items/:itemId/reviews/:reviewId'
     update: (updatedFields, reviewId, itemId) => {
@@ -135,11 +137,12 @@ const model = {
       };
       return pgPool.connect()
       .then((client) => {
-        return client.query(query);
+        return client.query(query)
+        .then(res => {
+          client.release();
+          return (res.rowCount);
+        });
       })
-      .then(res => {
-        return (res.rowCount);
-      });
     },
     // DELETE - '/api/items/:itemId/reviews/:reviewId'
     destroy: (reviewId, itemId) => {
@@ -149,11 +152,13 @@ const model = {
       };
       return pgPool.connect()
         .then((client) => {
-          return client.query(query);
+          return client.query(query)
+          .then(res => {
+            client.release();
+            return (res.rowCount);
+          });
         })
-        .then(res => {
-          return (res.rowCount);
-        });
+
     },
 
   },

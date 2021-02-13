@@ -1,5 +1,7 @@
 const supertest = require('supertest');
 const app = require('./app.js');
+const { pgPool } = require('../database/database_postgres/index.js');
+
 
 const request = supertest(app);
 
@@ -32,7 +34,7 @@ describe('testing-server-endpoints', () => {
 
   it('POST a new review to a specific item by the itemId', (done) => {
     request
-      .post('/api/items/30/reviews')
+      .post('/api/items/60/reviews')
       .send({
         customer_name: 'Shalom Meshulam',
         date_of_review: 'May 3 2020',
@@ -42,7 +44,7 @@ describe('testing-server-endpoints', () => {
         item_option: 'Blue',
       })
       .expect(200, {
-        message: 'A new review for itemId 30 was inserted succesfuly',
+        message: 'A new review for itemId 60 was inserted succesfuly',
       })
       .end((err, res) => {
         if (err) return done(err);
@@ -73,20 +75,21 @@ describe('testing-server-endpoints', () => {
 
   it('Delete a review from a specific item by using itemId and review id', (done) => {
     request
-      .delete('/api/items/60/reviews/9451349')
-      .expect(200, {
-        message: 'Review with id 9451349 was deleted successfully!',
+      .get('/api/items/60/reviews')
+      .then(response => {
+        //console.log(response.body[0].id);
+        let reviewId = response.body[0].id;
+        return request
+          .delete(`/api/items/60/reviews/${reviewId}`)
+          .expect(200, {
+            message: `Review with id ${reviewId} was deleted successfully!`,
+          })
       })
-      .end((err, res) => {
+      .finally((err) => {
         if (err) return done(err);
         return done();
       });
   });
 }); // describe
 
-
-// afterAll(() => {
-//   mongoose.connection.close();
-//   //server.close();
-// });
-
+afterAll(() => { pgPool.end(); });
