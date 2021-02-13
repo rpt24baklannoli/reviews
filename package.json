@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config ./jest.config.json",
+    "sdc-endpoints-test": "mocha server/server.test.js",
     "generate-images": "node database/utils/imagesScript.js",
     "start": "nodemon server/index.js",
     "react-dev": "webpack --watch",

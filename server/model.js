@@ -1,5 +1,5 @@
-const { Review } = require('../database/model.js');
-const { items } = require('../database/database_couchDb/index.js');
+//const { Review } = require('../database/model.js'); MySQL
+//const { items } = require('../database/database_couchDb/index.js'); CouchDB
 const { pgPool } = require('../database/database_postgres/index.js');
 
 // MySQL + Sequalize
@@ -122,12 +122,9 @@ const model = {
         .then((client) => {
           return client.query(query);
         })
-      .then(res => {
-        if (res.rowCount === 1) {
-          return (`A new review for itemId ${newReview.ItemId} was inserted succesfuly`);
-        }
-        return (`A new review for itemId ${newReview.ItemId} could not be inserted`);
-      });
+        .then(res => {
+          return (res.rowCount);
+        });
     },
    // UPDATE - '/api/items/:itemId/reviews/:reviewId'
     update: (updatedFields, reviewId, itemId) => {
@@ -159,9 +156,9 @@ const model = {
         });
     },
 
-},
+  },
 };
 
 // module.exports = model.mysqlSequalize;
-module.exports = model.couchDb;
-//module.exports = model.postgreSQL;
+// module.exports = model.couchDb;
+module.exports = model.postgreSQL;

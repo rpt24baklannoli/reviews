@@ -32,8 +32,16 @@ const controller = {
         ItemId: req.params.itemId,
       };
       model.create(newReview)
-        .then((data) => {
-          res.send(data);
+        .then((num) => {
+          if (num === 1) {
+            res.send({
+              message: `A new review for itemId ${newReview.ItemId} was inserted succesfuly`,
+            });
+          } else {
+            res.send({
+              message: `A new review for itemId ${newReview.ItemId} could not be inserted`,
+            });
+          }
         })
         .catch((err) => {
           res.status(500).send({
