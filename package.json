@@ -4,7 +4,8 @@
   "description": "Fetsy Reviews FEC",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config ./jest.config.json",
+    "oldtest": "jest --config ./jest.config.json",
+    "test": "mocha server/server.test.js",
     "sdc-endpoints-test": "mocha server/server.test.js",
     "generate-images": "node database/utils/imagesScript.js",
     "start": "nodemon server/index.js",
