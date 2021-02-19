@@ -4,16 +4,19 @@
   "description": "Fetsy Reviews FEC",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config ./jest.config.json",
+    "oldtest": "jest --config ./jest.config.json",
+    "test": "jest server/server.test.js",
+    "sdc-endpoints-test": "mocha server/server.test.js",
     "generate-images": "node database/utils/imagesScript.js",
     "start": "nodemon server/index.js",
     "react-dev": "webpack --watch",
     "lint": "eslint client/src/**",
-    "seed-db": "node database/csvSeed.js",
+    "seed-csv": "time node database/csvSeed.js",
     "load_from_csv_mysql": "mysql reviews < ./database/loadFromCSV.sql",
     "seed_and_load_mysql": "time node database/csvSeed.js; time mysql reviews < ./database/loadFromCSV.sql",
     "prepare_json_couchdb": "time node database/database_couchDb/jsonSeed.js",
-    "seed_couchdb_from_json": "bash database/database_couchDb/couchDB_seed.sh"
+    "seed_couchdb_from_json": "bash database/database_couchDb/couchDB_seed.sh",
+    "seed_postgres_from_csv": "time psql reviews --username=postgres --file=database/database_postgres/postgres.sql"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "csv-write-stream": "^2.0.0",
+    "execution-time": "^1.4.1",
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "fast-csv": "^4.3.6",
@@ -39,6 +43,7 @@
     "nano": "^9.0.3",
     "nodemon": "^2.0.6",
     "path": "^0.12.7",
+    "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-multi-carousel": "^2.5.5",

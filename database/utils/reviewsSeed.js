@@ -103,7 +103,7 @@ const getFakeReview = (maxNumItems) => {
 	const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 	const name = faker.name.findName();
 	const d = faker.date.past();
-	const date = `${monthNames[d.getMonth()]} ${d.getDay()}, ${d.getFullYear()}`;
+	const date = `${monthNames[d.getMonth()]} ${d.getDay() + 1} ${d.getFullYear()}`;
 	const rating = faker.random.number({
 		min: 1,
 		max: 5,
@@ -115,10 +115,10 @@ const getFakeReview = (maxNumItems) => {
 		max: maxNumItems,
 	});
 
-	const pastDate = faker.date.past();
-	const pastDateStr = `${pastDate.getFullYear()}-${pastDate.getMonth()+1}-${pastDate.getDay()+1}`;
-	const recentDate = faker.date.past();
-	const recentDateStr = `${recentDate.getFullYear()}-${recentDate.getMonth()+1}-${recentDate.getDay()+1}`;
+//	const pastDate = faker.date.past();
+//	const pastDateStr = `${pastDate.getFullYear()}-${pastDate.getMonth()+1}-${pastDate.getDay()+1}`;
+//	const recentDate = faker.date.past();
+//	const recentDateStr = `${recentDate.getFullYear()}-${recentDate.getMonth()+1}-${recentDate.getDay()+1}`;
 
 	const reviewJson = {
 		customer_name: name,
@@ -131,8 +131,7 @@ const getFakeReview = (maxNumItems) => {
 		})}.jpg`,
 		ItemId: itemId,
 		item_option: options,
-		createdAt: pastDateStr,
-    updatedAt: recentDateStr,
+
 	};
 	// reviewsData.push(json);
   return reviewJson;
