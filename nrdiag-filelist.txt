@@ -1,0 +1,24 @@
+List of files in zipfile
+Stored file name:Base/Config/newrelic.js
+Original path:/Users/avigail/Desktop/SDC/fetsyReviews/newrelic.js
+
+Stored file name:Base/Log/newrelic_agent.log
+Original path:/Users/avigail/Desktop/SDC/fetsyReviews/newrelic_agent.log
+
+Stored file name:Node/Env/npm_ls_output.txt
+Original path:npm_ls_output.txt
+
+Stored file name:Node/Env/package.json
+Original path:/Users/avigail/Desktop/SDC/fetsyReviews/package.json
+
+Stored file name:Node/Env/package-lock.json
+Original path:/Users/avigail/Desktop/SDC/fetsyReviews/package-lock.json
+
+Stored file name:Base/Containers/docker-info.json
+Original path:docker-info.json
+
+Stored file name:nrdiag-filelist.txt
+Original path:./nrdiag-filelist.txt
+
+Stored file name:nrdiag-output.json
+Original path:./nrdiag-output.json

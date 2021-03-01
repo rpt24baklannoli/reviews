@@ -4,6 +4,8 @@ const controller = {
   reviews: {
     // FEC GET
     get: (req, res) => {
+      // for testing what is the issue with the stress tests
+      // res.status(200);
       model.findAll(req.params.itemId)
         .then((items) => {
           res.status(200).json(items);
@@ -44,6 +46,7 @@ const controller = {
           }
         })
         .catch((err) => {
+          console.log("post error", err, "GOT:", newReview);
           res.status(500).send({
             message:
               err.message || 'Some error occurred while creating the review.',

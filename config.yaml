@@ -1,0 +1,83 @@
+config:
+  target: "http://localhost:3002"
+  phases:
+
+    - duration: 60
+      arrivalRate: 1000
+      name: "Sustained max load of 1000"
+
+    # - duration: 60
+    #   arrivalRate: 1
+    # # rampTo: 10
+    #   name: "Warm up the application"
+    # - duration: 60
+    #   arrivalRate: 10
+    #   name: "Sustained load of 10"
+    # - duration: 30
+    #   arrivalRate: 100
+    #   name: "Sustained load of 100"
+    # - duration: 60
+    #   arrivalRate: 250
+    #   name: "Sustained max load of 1000"
+  variables:
+    id:
+      - "9900979"
+      - "9899970"
+      - "9990079"
+    customer_name:
+      - "Harry Potter"
+      - "Lisa Persly"
+      - "Jesica Bill"
+      - "Marisa Mayer"
+    date_of_review:
+      - "Dec 3 2020"
+      - "Mar 9 2017"
+      - "Oct 8 2020"
+      - "May 6 2020"
+    rating:
+      - 5
+      - 4
+      - 3
+      - 1
+    review_content:
+      - "I like this product so much"
+      - "Do not buy this"
+      - "I would buy it again"
+      - "Should not but it"
+    image_url:
+      - "https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/269.jpg"
+      - "https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/221.jpg"
+      - "https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/363.jpg"
+      - https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/123.jpg
+    item_option:
+     - "black"
+     - "Red"
+     - "Pink"
+     - "Blue"
+  ensure:
+    maxErrorRate: 1
+    p95: 2000
+scenarios:
+  - name: "Get Reviews for an item"
+    flow:
+      - get:
+          url: "/api/items/{{ id }}/reviews"
+      - get:
+          url: "/api/items/{{ id }}/reviews"
+  #    - log: "Sent a request with {{ id }}"
+  # post a new review to an item:
+  # - name: "Post a new review to an item"
+  #   flow:
+  #     - post:
+  #         url: "/api/items/{{ id }}/reviews"
+  #         json:
+  #           customer_name: "{{ customer_name }}"
+  #           date_of_review: "{{ date_of_review }}"
+  #           rating: "{{ rating }}"
+  #           review_content: "{{ review_content }}"
+  #           image_url: "{{ image_url }}"
+  #           item_option: "{{ item_option }}"
+      # - log: "Sent a post with /api/items/{{ id }}/reviews and {{ customer_name }},{{ date_of_review }},{{ rating }},{{ review_content }},{{ image_url }},{{ item_option }}"
+
+
+

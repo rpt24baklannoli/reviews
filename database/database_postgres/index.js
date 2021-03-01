@@ -9,6 +9,7 @@ const pgPool = new Pool({
   database: 'reviews',
   password: 'admin',
   port: 5432,
+  max: 50,
 });
 
 
