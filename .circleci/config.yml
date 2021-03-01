@@ -1,7 +1,49 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
+jobs:
+  run_reviews_tests:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
+          name: install npm dependencies
+          command: |
+            npm install --save
+      - run:
+          name: run unit tests
+          command: |
+            npm run test
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
 workflows:
   node-tests:
     jobs:
-      - node/test
+      - run_reviews_tests
+
+#   build:
+#     docker:
+#       - image: circleci/node:7.10
+
+#     working_directory: ~/Desktop/SDC/fetsyreviews
+
+#     steps:
+#       - checkout
+#       - restore_cache:
+#         - v1-dependencies-{{ checksum "package.json" }}
+#         - v1-dependencies-
+#       - run: npm install
+#       - save_cache:
+#         paths:
+#           - node_modules
+#         key: v1-dependencies-{{ checksum: "package.json" }}
+
+#       - run: npm test
+
+# orbs:
+#   node: circleci/node@3.0.0
+# workflows:
+#   node-tests:
+#     jobs:
+#       - node/test
