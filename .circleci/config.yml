@@ -3,6 +3,11 @@ jobs:
   run_reviews_tests:
     docker:
       - image: circleci/node:10
+      - image: circleci/postgres:11-alpine-ram
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+          POSGRES_DB: reviews
     steps:
       - checkout
       - run:
