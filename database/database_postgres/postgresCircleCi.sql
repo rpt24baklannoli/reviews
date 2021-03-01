@@ -34,6 +34,6 @@ CREATE  INDEX itemId_idx ON Reviews (ItemId);
 
 
 -- copy command for uploading the postgreSQL database
- \COPY Items(item_name) FROM PROGRAM 'cat ./database/itemsCircleCi.csv' WITH (FORMAT CSV, HEADER)
+ \COPY Items(item_name) FROM PROGRAM 'cat /home/circleci/Desktop/SDC/fetsyreviews/database/itemsCircleCi.csv' WITH (FORMAT CSV, HEADER)
 
-\COPY Reviews(customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option) FROM PROGRAM 'cat ./database/reviewsCircleCi.csv' WITH (FORMAT CSV, HEADER)
+\COPY Reviews(customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option) FROM PROGRAM 'cat /home/circleci/Desktop/SDC/fetsyreviews/database/reviewsCircleCi.csv' WITH (FORMAT CSV, HEADER)
