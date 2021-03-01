@@ -1,4 +1,8 @@
-require('newrelic');
+//require('newrelic');
+let fs = require('fs');
+let fileContent = fs.readFileSync(’./node_modules/newrelic/index.js’, { encoding: ‘utf-8’ });
+fileContent = fileContent.replace(“lib/config’”, “lib/config/index’”);
+fs.writeFileSync(’./node_modules/newrelic/index.js’, fileContent, { encoding: ‘utf-8’, flag: ‘w’ });
 const express = require('express');
 const cors = require('cors');
 const controller = require('./controller');
