@@ -32,7 +32,8 @@ CREATE TABLE Reviews (
 
 CREATE  INDEX itemId_idx ON Reviews (ItemId);
 
-/*
+
+
 // copy command for uploading the postgreSQL database
  \COPY Items(item_name) FROM PROGRAM 'cat ./database/items.csv' WITH (FORMAT CSV, HEADER)
 

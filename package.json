@@ -16,7 +16,8 @@
     "seed_and_load_mysql": "time node database/csvSeed.js; time mysql reviews < ./database/loadFromCSV.sql",
     "prepare_json_couchdb": "time node database/database_couchDb/jsonSeed.js",
     "seed_couchdb_from_json": "bash database/database_couchDb/couchDB_seed.sh",
-    "seed_postgres_from_csv": "time psql reviews --username=postgres --file=database/database_postgres/postgres.sql"
+    "seed_postgres_from_csv": "time psql reviews --username=postgres --file=database/database_postgres/postgres.sql",
+    "seed_postgres_for_circleci": "psql reviews --username=postgres --file=database/database_postgres/postgresCircleCi.sql"
   },
   "repository": {
     "type": "git",
@@ -29,10 +30,12 @@
   },
   "homepage": "https://github.com/rpt24sourcandy/fetsyReviews#readme",
   "dependencies": {
+    "@newrelic/native-metrics": "^6.0.0",
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "csv-write-stream": "^2.0.0",
+    "dotenv": "^8.2.0",
     "execution-time": "^1.4.1",
     "express": "^4.17.1",
     "faker": "^5.1.0",
@@ -41,6 +44,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "nano": "^9.0.3",
+    "newrelic": "^7.1.1",
     "nodemon": "^2.0.6",
     "path": "^0.12.7",
     "pg": "^8.5.1",
