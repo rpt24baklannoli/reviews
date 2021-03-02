@@ -23,8 +23,9 @@ describe('testing-server-endpoints', () => {
   }); // it
 
   it('POST a new review to a specific item by the itemId', (done) => {
+    let itemId = 9;
     request
-      .post('/api/items/9/reviews')
+      .post(`/api/items/${itemId}/reviews`)
       .send({
         customer_name: 'Shalom Meshulam',
         date_of_review: 'May 3 2020',
@@ -34,7 +35,7 @@ describe('testing-server-endpoints', () => {
         item_option: 'Blue',
       })
       .expect(200, {
-        message: 'A new review for itemId 60 was inserted succesfuly',
+        message: `A new review for itemId ${itemId} was inserted succesfuly`,
       })
       .end((err, res) => {
         if (err) return done(err);
