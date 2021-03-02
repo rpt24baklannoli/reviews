@@ -17,7 +17,7 @@
     "prepare_json_couchdb": "time node database/database_couchDb/jsonSeed.js",
     "seed_couchdb_from_json": "bash database/database_couchDb/couchDB_seed.sh",
     "seed_postgres_from_csv": "time psql reviews --username=postgres --file=database/database_postgres/postgres.sql",
-    "seed_postgres_from_csv_circleci": "psql reviews --username=postgres --file=database/database_postgres/postgresCircleCi.sql"
+    "seed_postgres_for_circleci": "psql reviews --username=postgres --file=database/database_postgres/postgresCircleCi.sql"
   },
   "repository": {
     "type": "git",

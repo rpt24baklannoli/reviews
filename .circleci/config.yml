@@ -45,7 +45,7 @@ jobs:
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: seeding postgres
-          command: npm run seed_postgres_from_csv_circleci
+          command: npm run seed_postgres_for_circleci
       - run:
           name: Run tests
           command: npm run test
