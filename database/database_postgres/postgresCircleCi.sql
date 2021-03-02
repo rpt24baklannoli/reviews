@@ -52,7 +52,7 @@ VALUES
     ('Jennifer Stewart', 'Oct 31 2020', 5, '', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/269.jpg','Hot Pink', 1),
     ('thebec69', 'Nov 11 2020', 5, '', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/280.jpg', 'Black', 2),
     ('Beverly Smith','Nov 10 2020', 5, 'Really love this mask in black! I received a lot of compliments. It was delivered on time .', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/269.jpg', 'Yellow', 4),
-    ('Kazza', 'Nov 11 2020','Speedy delivery Item nice Recommend', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/222.jpg', 'Christmas tree+bow', 2),
+    ('Kazza', 'Nov 11 2020', 2, 'Speedy delivery Item nice Recommend', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/222.jpg', 'Christmas tree+bow', 2),
     ('Angela Naylor', 'Oct 21 2020', 4, 'Absolutely beautiful will definitely be purchasing some more . Delivery time outstanding so quick thank you so much xx 💜', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg','RED', 1),
     ('Laura Hendricks', 'Sep 3 2019', 1, 'do not buy this', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/898.jpg', 'Pink'),
     ('Sharon Joe', 'May 1 2018', 3, 'I would not but it again but the quality is okay', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/898.jpg', 'Blue', 7),
