@@ -54,13 +54,14 @@ VALUES
     ('Beverly Smith','Nov 10 2020', 5, 'Really love this mask in black! I received a lot of compliments. It was delivered on time .', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/269.jpg', 'Yellow', 4),
     ('Kazza', 'Nov 11 2020', 2, 'Speedy delivery Item nice Recommend', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/222.jpg', 'Christmas tree+bow', 2),
     ('Angela Naylor', 'Oct 21 2020', 4, 'Absolutely beautiful will definitely be purchasing some more . Delivery time outstanding so quick thank you so much xx 💜', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg','RED', 1),
-    ('Laura Hendricks', 'Sep 3 2019', 1, 'do not buy this', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/898.jpg', 'Pink'),
+    ('Laura Hendricks', 'Sep 3 2019', 1, 'do not buy this', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/898.jpg', 'Pink', 7),
     ('Sharon Joe', 'May 1 2018', 3, 'I would not but it again but the quality is okay', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/898.jpg', 'Blue', 7),
     ('Ezra Hazan', 'Sep 15 2018', 5, 'Just greart', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/898.jpg', 'Black', 8),
     ('Shlomi Harazi', 'Jan 3 2020', 1, 'low quality', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/899.jpg', 'Blue', 5),
     ('Shalom Elimelech', 'April 7 2020', 4, 'nice product', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/555.jpg', 'Black', 3),
     ('Shuki Ben Zaken', 'Feb 1 2019', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 2),
-    ('Shuki Ben Zaken', 'Feb 1 2019', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 7),('Chen Ben Zaken', 'Feb 1 2018', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 6),
+    ('Shuki Ben Zaken', 'Feb 1 2019', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 7),
+    ('Chen Ben Zaken', 'Feb 1 2018', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 6),
     ('Dror Ben Zaken', 'Feb 1 2019', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 2),
     ('Haled Cohen', 'Feb 1 2019', 5, 'Great Great', 'https://fetsy-reviews-sdc.s3.us-east-2.amazonaws.com/images/666.jpg', 'Black', 9)
     ;
