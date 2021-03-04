@@ -113,3 +113,6 @@ items.json
 
 # images on the local machine
 ./database/images
+
+# postgreSql database for ec2
+postgres-sc2.sh

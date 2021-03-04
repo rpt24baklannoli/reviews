@@ -39,7 +39,7 @@ describe('testing-server-endpoints', () => {
       })
       .end((err, res) => {
         if (err) return done(err);
-          return done();
+        return done();
       });
   });
 
