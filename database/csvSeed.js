@@ -103,8 +103,51 @@ const createReviews = () => {
   writeReviews();
 };
 
+const createReviewsWithFilename = (numReviews, filename) => {
+  console.log("Creating reviews in ", filename);
+  var numReviews = numReviews;
+
+
+  const writer = fs.createWriteStream(filename);
+  writer.write('customer_name,date_of_review,rating,review_content,image_url,ItemId,item_option\n');
+
+  function writeReviews() {
+    var ok = true;
+    do {
+      numReviews -= 1;
+      if (numReviews === 0) {
+        // last time!
+        let review = getFakeReview(itemsToGenerate);
+        review.id = numReviews;
+        writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option}\n`);
+      } else {
+        // see if we should continue, or wait
+        // don't pass the callback, because we're not done yet.
+        let review = getFakeReview(itemsToGenerate);
+        review.id = numReviews;
+        ok = writer.write(`${review.customer_name},"${review.date_of_review}",${review.rating},${review.review_content},${review.image_url},${review.ItemId},${review.item_option}\n`);
+        if (numReviews % 100000 === 0) { console.log(`Writing ${numReviews}`);}
+      }
+    } while (numReviews > 0 && ok);
+    if (numReviews > 0) {
+      // had to stop early!
+      // write some more once it drains
+      //console.log("Needs drain...");
+      writer.once('drain', writeReviews);
+    }
+  }
+  writeReviews();
+};
+
+
 createItems();
-createReviews();
+//createReviews();
+
+createReviewsWithFilename(10000000, './database/reviews1.csv');
+createReviewsWithFilename(10000000, './database/reviews2.csv');
+createReviewsWithFilename(10000000, './database/reviews3.csv');
+createReviewsWithFilename(10000000, './database/reviews4.csv');
+createReviewsWithFilename(10000000, './database/reviews5.csv');
 
 // ,${review.createdAt},${review.updatedAt},${review.id}
 // ,${item.updatedAt},${item.id}

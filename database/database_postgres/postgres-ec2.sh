@@ -29,4 +29,10 @@ psql -U postgres -c "ALTER USER  postgres  WITH PASSWORD 'admin';"
 exit
 
 # we will restart the Postgres daemon by running:\
-sudo service postgresql start
+#sudo service postgresql start
+
+sudo systemctl start postgresql-13
+sudo systemctl stop postgresql-13
+
+psql reviews -U postgres
+sudo yum install gcc-c++
