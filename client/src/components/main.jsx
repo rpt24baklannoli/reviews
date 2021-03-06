@@ -32,7 +32,7 @@ class Main extends React.Component {
 
 	getReviews(itemId) {
 		axios
-			.get(`http://localhost:3002/api/items/${itemId}/reviews`)
+			.get(`/api/items/${itemId}/reviews`)
 			.then((response) => {
 				this.setState({
 					reviews: response.data,
