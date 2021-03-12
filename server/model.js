@@ -2,6 +2,10 @@
 //const { items } = require('../database/database_couchDb/index.js'); CouchDB
 const { pgPool } = require('../database/database_postgres/index.js');
 
+// for batching insert with postgresql
+const numOfRecordsToInsertInBatch = 100;
+var recordsArr = [];
+
 // MySQL + Sequalize
 const model = {
   mysqlSequalize: {
@@ -114,17 +118,50 @@ const model = {
       },
     // POST - '/api/items/:itemId/reviews'
     create: (newReview) => {
-      const query = {
-        text: 'INSERT INTO reviews (customer_name,date_of_review,rating,review_content,image_url,item_option,ItemId) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-        values: [newReview.customer_name,newReview.date_of_review,newReview.rating,newReview.review_content,newReview.image_url,newReview.item_option,newReview.ItemId],
+      // batching up to 100 records insert
+      recordsArr.push(newReview);
+      if (recordsArr.length < numOfRecordsToInsertInBatch) {
+        // the controller.js is expecting a promise that resolve with a number of inserts
+        // since I am batching the insert I need to show the controller that the insert
+        // process was sucessful.
+        return Promise.resolve(1);
+      }
+      let text = 'INSERT INTO reviews (customer_name,date_of_review,rating,review_content,image_url,item_option,ItemId) VALUES ';
+      let values = [];
+      let counter = 0;
 
+      for (let i = 0; i < recordsArr.length; i++) {
+        // Writing the ($1, $2, $3, $4, $5, $6, $7) with the counter
+        let recText = `($${counter+1}, $${counter+2}, $${counter+3}, $${counter+4}, $${counter+5}, $${counter+6}, $${counter+7})`;
+        text += recText;
+
+        values.push(newReview.customer_name,
+          newReview.date_of_review,
+          newReview.rating,
+          newReview.review_content,
+          newReview.image_url,
+          newReview.item_option,
+          newReview.ItemId);
+
+        counter += 7;
+
+        if (i < recordsArr.length - 1) {
+          text += ',';
+        }
+      }
+      const query = {
+        text: text,
+        values: values,
       };
+      // Empty the batch array
+      recordsArr = [];
       return pgPool.connect()
         .then((client) => {
           return client.query(query)
             .then(res => {
               client.release();
-              return (res.rowCount);
+              // console.log("Postgres batch insert inserted reviews:", res.rowCount);
+              return 1;
             });
         })
     },
