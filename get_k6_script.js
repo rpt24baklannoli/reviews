@@ -1,4 +1,5 @@
 import http from 'k6/http';
+import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.0.0/index.js";
 
 export const options = {
   discardResponseBodies: true,
@@ -46,22 +47,26 @@ export const options = {
 };
 
 export function one_request() {
-  let id = 9300000 + __VU;
+  //let id = 9300000 + __VU;
+  const id = randomIntBetween(9000000, 10000000);
   http.get(`http://localhost:3002/api/items/${id}/reviews`,
     { tags: { my_custom_tag: 'one_request' } });
 }
 export function ten_requests() {
-  let id = 9300000 + __VU;
+  //let id = 9300000 + __VU;
+  const id = randomIntBetween(9000000, 10000000);
   http.get(`http://localhost:3002/api/items/${id}/reviews`,
     { tags: { my_custom_tag: 'ten_requests' } });
 }
 export function hundred_requests() {
-  let id = 9300000 + __VU;
+  //let id = 9300000 + __VU;
+  const id = randomIntBetween(9000000, 10000000);
   http.get(`http://localhost:3002/api/items/${id}/reviews`,
     { tags: { my_custom_tag: 'hundred_requests' } });
 }
 export function thousand_requests() {
-  let id = 9300000 + __VU;
+  //let id = 9300000 + __VU;
+  const id = randomIntBetween(9000000, 10000000);
   http.get(`http://localhost:3002/api/items/${id}/reviews`,
-    { tags: { my_custom_tag: 'thousand_requests' } });
+    { tags: { name: 'thousand_requests' } });
 }
