@@ -8,7 +8,7 @@ const cors = require('cors');
 const controller = require('./controller');
 
 const app = express();
-// const port = 3002;
+//const port = 3002;
 
 app.use(express.json());
 app.use(cors());
@@ -18,6 +18,11 @@ app.use('/items/:itemId', express.static('client/dist'));
 // FEC GET
 app.get('/api/items/:itemId/reviews', (req, res) => {
   controller.reviews.get(req, res);
+});
+
+//SDC node-cache stats
+app.get('/stats', (req, res) => {
+  controller.reviews.stats(req, res);
 });
 
 // SDC POST
@@ -34,6 +39,8 @@ app.delete('/api/items/:itemId/reviews/:reviewId', (req, res) => {
 app.put('/api/items/:itemId/reviews/:reviewId', (req, res) => {
   controller.reviews.put(req, res);
 });
+
+
 
 // app.listen(port, () => {
 //   // eslint-disable-next-line no-console

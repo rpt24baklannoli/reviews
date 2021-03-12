@@ -1,4 +1,6 @@
 const model = require('./model.js');
+const NodeCache = require( "node-cache" );
+const myCache = new NodeCache({ stdTTL: 3600 });
 
 const controller = {
   reviews: {
@@ -6,13 +8,27 @@ const controller = {
     get: (req, res) => {
       // for testing what is the issue with the stress tests
       // res.status(200);
-      model.findAll(req.params.itemId)
-        .then((items) => {
-          res.status(200).json(items);
-        })
-        .catch((err) => {
-          res.status(404).send(err);
-        });
+      let itemId = req.params.itemId;
+      // get from cache. if not in cache send axios request
+      // key it itemId and the reviews are the value
+      let value = myCache.get(itemId);
+      if (value == undefined) {
+        model.findAll(req.params.itemId)
+          .then((items) => {
+            // set in cache
+            myCache.set(itemId, items);
+            res.status(200).json(items);
+          })
+          .catch((err) => {
+            res.status(404).send(err);
+          });
+      } else {
+        res.status(200).send(value);
+      }
+    },
+    // Cache STATS node-cache
+    stats: (req, res) => {
+      res.status(200).send(myCache.getStats());
     },
     // POST
     post: (req, res) => {
