@@ -1,8 +1,8 @@
-require('newrelic');
-// let fs = require('fs');
-// let fileContent = fs.readFileSync('./node_modules/newrelic/index.js', { encoding: 'utf-8' });
-// fileContent = fileContent.replace('lib/config', 'lib/config/index');
-// fs.writeFileSync('./node_modules/newrelic/index.js', fileContent, { encoding: 'utf-8', flag: 'w' });
+//require('newrelic');
+let fs = require('fs');
+let fileContent = fs.readFileSync('./node_modules/newrelic/index.js', { encoding: 'utf-8' });
+fileContent = fileContent.replace('lib/config', 'lib/config/index');
+fs.writeFileSync('./node_modules/newrelic/index.js', fileContent, { encoding: 'utf-8', flag: 'w' });
 const express = require('express');
 const cors = require('cors');
 const controller = require('./controller');
@@ -40,11 +40,6 @@ app.put('/api/items/:itemId/reviews/:reviewId', (req, res) => {
   controller.reviews.put(req, res);
 });
 
-
-
-// app.listen(port, () => {
-//   // eslint-disable-next-line no-console
-//   console.log(`Listening at http://localhost:${port}`);
-// });
+// app.listen is in index.js for the integration tests
 
 module.exports = app;
